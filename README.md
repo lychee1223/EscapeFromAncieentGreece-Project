@@ -1,5 +1,5 @@
 # 古代ギリシアからの脱出 \~アテナイの疫病編~
-紀元前432年の古代ギリシアを舞台とした脱出ゲームのプロジェクトです．<br>
+紀元前432年の古代ギリシアを舞台とした脱出ゲームのProjectデータです．<br>
 本ゲームをプレイしたい方はリポジトリ[EscapeFromAncieentGreece-Game](https://github.com/lychee1223/EscapeFromAncieentGreece-Game)からダウンロードしてください．<br>
 > UnityRoomでのリリースは現在準備中です．少々お待ちください．
 
@@ -26,7 +26,7 @@
 
 
 ## 使用アセット
-この作品の開発にあたり，以下のアセットを利用させて頂きました．この場をお借りして感謝申し上げます．<br>
+この作品の開発にあたり，以下のアセットを利用させて頂きました．この場をお借りして感謝申し上げます．
 <!-- 建築 -->
 - [Temple of Athena](https://assetstore.unity.com/packages/3d/environments/historic/temple-of-athena-86198)
 - [Roman City Set](https://assetstore.unity.com/packages/3d/environments/historic/roman-city-set-168930)
