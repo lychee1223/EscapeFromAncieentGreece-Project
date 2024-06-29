@@ -122,7 +122,6 @@ void Start()
     float ChangeVolume(float volume, float addend, TMP_Text text, Image fillArea)
     {
         volume = Mathf.Clamp01(volume + addend);
-        Debug.Log(volume);
         fillArea.fillAmount = volume;
         text.text = (volume * 100).ToString("N0") + "%";
         return volume;
