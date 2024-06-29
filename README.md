@@ -1,7 +1,9 @@
 # 古代ギリシアからの脱出 \~アテナイの疫病編~
 紀元前432年の古代ギリシアを舞台とした脱出ゲームのProjectデータです．<br>
-本ゲームをプレイしたい方はリポジトリ[EscapeFromAncieentGreece-Game](https://github.com/lychee1223/EscapeFromAncieentGreece-Game)からダウンロードしてください．<br>
-> UnityRoomでのリリースは現在準備中です．少々お待ちください．
+
+## プレイする
+- HDRP版はリポジトリ[EscapeFromAncieentGreece-Game](https://github.com/lychee1223/EscapeFromAncieentGreece-Game)からダウンロードをお願いします
+- URP版は[UnityRoom](https://unityroom.com/games/escapefromancieentgreece)でWeb上から遊べます
 
 
 ## 開発環境
@@ -55,7 +57,9 @@
 
 > [!WARNING]
 > 上記のアセットは本リポジトリに含まれていません．<br>
-> したがって，**本リポジトリは完全なプロジェクトではなく，cloneしても正常に動作はしません．** ご了承ください．
+> したがって，**本リポジトリは完全なプロジェクトではなく，cloneするだけでは正常に動作はしません．<br>**
+> また，一部のアセットはHDRP用にシェーダーをl変更しているため，**これらアセットをimportしても正常に動作しません**
+> ご了承ください．
 
 
 ## 工夫点
@@ -63,24 +67,20 @@
 
 本ゲームにおいて，ユーザは左クリックのみでアイテムの取得や設置，扉の開錠など，様々なアクションを起こすことができます．<br>
 本プロジェクトでは，同一インターフェースを実装した"Event"という単位でこれらのアクションを構築することで，極めて拡張性に富んだ設計を行っています．<br>
-この設計により，インスペクタの操作のみで様々なアクションの追加，調整が容易となっています．
+EventはEventListクラスでまとめて管理され，1つのEventListが1つのアクションを実装します．<br>
+EventListクラスはIEventインターフェースを継承した様々なEventを1つのリストにまとめ，各要素のEventを逐次的に実行します．<br>
+例えば，オブジェクトの移動と効果音の再生を逐次的に実行することで，扉の開閉といったアクションが実現されます．<br>
+リストへの格納はインスペクタから容易に行うことが可能です．この設計により，インスペクタの操作のみで容易に様々なアクションの追加，調整を行うことができます．<br>
 
 |Event名 | 内容 |
 | --- | --- | 
 | AddChangeCameraAngleEvent | カメラアングルの変更 |
 | AddGetItemEvent | アイテムをインベントリへ追加 or 所持しているアイテムの入れ替え |
 | AddGetDrachmaEvent | お金(ボーナスポイント)の取得 |
-| AddMoveObjectEvent | 座標Aから座標Bへオブジェクトをt秒で移動させる |
+| AddMoveObjectEvent | 座標Aから座標B(または逆)へオブジェクトをt秒で移動させる |
 | AddKeyInputEvent | 暗号システムへの入力を行う |
 | AddSetActiveEvent | オブジェクトのアクティブ状態を設定する |
 | AddMessageEvent | メッセージを表示する |
 | AddGameOverEvent | リザルト画面を表示する |
 | AddPlaySoundEvent | 効果音を鳴らす |
 | AddSetStatusTagEventt | ヒントを管理するステータスタグを与える | 
-
-様々なアクションはこれら○○Eventクラスのインスタンスを1つのリストに格納することで実装されます．リストへの格納はインスペクタから容易に行うことが可能です．<br>
-以下のような条件がそろった場合，リストに格納された各Eventのplay()関数が逐次的に実行され，アクションが起こる仕組みです．
-- 左クリックによって飛ばされたレイが特定のオブジェクトに衝突した場合
-- 特定のアイテムが設置された場合
-- 暗号が解読された場合
-
