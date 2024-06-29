@@ -18,7 +18,7 @@
   </tr>
   <tr>
     <td> パイプライン </td> 
-    <td> HDRP </td>
+    <td> HDRP<br>(※UnityRoom版はURPに変換しています) </td>
   </tr>
   <tr>
     <td> 開発期間 </td> 
